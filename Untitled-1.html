@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dia de Campo: Manejo para a auto produtividade do cacau em ano de adversidade climática."
+    />
+    <title>Dia de Campo do Cacau | Inscrição Gratuita</title>
+
+    <style>
+      :root {
+        --bg: #f5f0e7;
+        --bg-soft: #fffdf9;
+        --card: rgba(255, 255, 255, 0.96);
+        --primary: #1b5d3f;
+        --primary-dark: #143d2d;
+        --primary-soft: #e6f1ea;
+        --accent: #ca8b2d;
+        --accent-soft: #f8edd4;
+        --text: #1d2b25;
+        --muted: #5d6d67;
+        --border: rgba(20, 41, 33, 0.08);
+        --shadow: 0 30px 80px rgba(12, 26, 20, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+      button, input, select, textarea { font: inherit; }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(245, 240, 231, 0.84);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(27, 93, 63, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 82px;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 1.2rem;
+        background: linear-gradient(135deg, #1b5d3f, #2d7d4b 60%, #d39b42);
+        color: #fff;
+        box-shadow: 0 12px 25px rgba(27, 93, 63, 0.2);
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .menu a:hover { color: var(--primary-dark); }
+
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 0.9rem 1.5rem;
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #2f7d50);
+        color: #fff;
+        box-shadow: 0 18px 30px rgba(27, 93, 63, 0.22);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hero {
+        position: relative;
+        padding: 90px 0 70px;
+        background:
+          linear-gradient(110deg, rgba(12, 24, 18, 0.82), rgba(15, 38, 30, 0.5)),
+          url("https://i.postimg.cc/7L6dGVbf/Whats-App-Image-2026-09-10-at-16-26-59.jpg") center/cover no-repeat;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(8, 15, 12, 0.08), rgba(8, 15, 12, 0.2));
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .eyebrow-dark {
+        background: rgba(202, 139, 45, 0.12);
+        color: #8a5c1f;
+        border-color: transparent;
+      }
+
+      .hero-copy h1 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2.5rem, 4vw, 4.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+        color: #fff;
+        max-width: 720px;
+      }
+
+      .subtitle {
+        max-width: 640px;
+        font-size: 1.08rem;
+        color: rgba(255, 255, 255, 0.84);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .highlights {
+        list-style: none;
+        padding: 0;
+        margin: 28px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+
+      .highlights li {
+        position: relative;
+        padding-left: 18px;
+      }
+
+      .highlights li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .hero-card {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
+        border: 1px solid rgba(20, 41, 33, 0.05);
+        border-radius: 28px;
+        padding: 28px 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .card-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.46rem 0.8rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #845c14;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .hero-card h2 {
+        margin: 1rem 0 1rem;
+        font-size: 1.6rem;
+      }
+
+      .hero-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+        color: var(--muted);
+      }
+
+      .hero-card li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(20, 41, 33, 0.08);
+      }
+
+      .hero-card li:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .hero-card li span {
+        color: var(--primary-dark);
+        font-weight: 800;
+      }
+
+      .price-box {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(135deg, var(--primary-soft), rgba(129, 180, 147, 0.42));
+        border-radius: 18px;
+        padding: 16px 18px;
+        color: var(--primary-dark);
+      }
+
+      .price-box span {
+        font-weight: 700;
+      }
+
+      .price-box strong {
+        font-size: 1.8rem;
+        letter-spacing: -0.04em;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 1rem 0 0;
+        max-width: 780px;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .feature-box {
+        background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,245,239,0.94));
+        border: 1px solid rgba(20, 41, 33, 0.05);
+        border-radius: 24px;
+        padding: 30px 24px;
+        box-shadow: 0 18px 35px rgba(16, 36, 29, 0.04);
+      }
+
+      .icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: rgba(27, 93, 63, 0.08);
+        font-size: 1.8rem;
+        margin-bottom: 18px;
+      }
+
+      .feature-box h3 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      .feature-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .alt {
+        background: rgba(255,255,255,0.38);
+      }
+
+      .agenda {
+        display: grid;
+        gap: 18px;
+      }
+
+      .agenda-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 18px;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(20, 41, 33, 0.05);
+        border-radius: 22px;
+        padding: 22px 24px;
+        box-shadow: 0 12px 24px rgba(12, 26, 20, 0.03);
+      }
+
+      .time {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.55rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(27, 93, 63, 0.08);
+        color: var(--primary-dark);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .agenda-item h3 {
+        margin: 0 0 6px;
+        font-size: 1.18rem;
+      }
+
+      .agenda-item p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .benefit-card {
+        background: linear-gradient(180deg, #fff, #faf5ee);
+        border: 1px solid rgba(20, 41, 33, 0.05);
+        border-radius: 24px;
+        padding: 28px 22px;
+        box-shadow: 0 18px 35px rgba(16, 36, 29, 0.04);
+      }
+
+      .benefit-card strong {
+        display: block;
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 14px;
+      }
+
+      .benefit-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .form-section {
+        background: linear-gradient(180deg, rgba(27, 93, 63, 0.06), rgba(255,255,255,0));
+      }
+
+      .form-wrap {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 30px;
+        align-items: start;
+      }
+
+      .form-copy h2 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .form-copy p {
+        color: var(--muted);
+      }
+
+      .info-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+
+      .inscricao-form {
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+        border: 1px solid rgba(20, 41, 33, 0.06);
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 20px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        background: #fbfaf7;
+        color: var(--text);
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: rgba(27, 93, 63, 0.5);
+        box-shadow: 0 0 0 4px rgba(27, 93, 63, 0.08);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .form-status {
+        min-height: 24px;
+        margin: 12px 0 0;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .footer {
+        padding: 24px 0 36px;
+        border-top: 1px solid rgba(27, 93, 63, 0.08);
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        color: var(--muted);
+      }
+
+      .footer-row a {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .form-wrap,
+        .feature-grid,
+        .benefit-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .menu {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 12px 0;
+        }
+
+        .cta-row {
+          flex-direction: column;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .agenda-item {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">C</span>
+          <div>
+            <strong>CIRCUITO AGRO DE NEGÓCIOS</strong>
+            <small>Capacitação Rural</small>
+          </div>
+        </div>
+
+        <nav class="menu" aria-label="Navegação principal">
+          <a href="#sobre">Sobre</a>
+          <a href="#programa">Programa</a>
+          <a href="#beneficios">Benefícios</a>
+          <a href="#inscricao">Inscrição</a>
+        </nav>
+
+        <a class="btn btn-primary" href="#inscricao">Inscrever-se</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">INSTRUTOR: Silvino Kruschewsky</p>
+            <h1>Dia de Campo: Manejo para a auto produtividade do cacau</h1>
+            <p class="subtitle">
+              Estratégias práticas para fortalecer a produção em ano de adversidade climática,
+              com foco em manejo, resiliência e produtividade sustentável.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#inscricao">Quero participar</a>
+              <a class="btn btn-secondary" href="#programa">Ver programação</a>
+            </div>
+
+            <ul class="highlights" aria-label="Informações do evento">
+              <li>Data: 24 de setembro</li>
+              <li>Local: Parque Urbano Pedro Mendes (Lago)</li>
+              <li>Inscrição gratuita</li>
+            </ul>
+          </div>
+
+          <div class="hero-card" aria-label="Resumo do evento">
+            <div class="card-badge">Evento agrícola</div>
+            <h2>Detalhes do evento</h2>
+
+            <ul>
+              <li><span>Local</span> Parque Urbano Pedro Mendes (Lago)</li>
+              <li><span>Data</span> 24 de setembro</li>
+              <li><span>Foco</span> Produtividade e manejo sustentável</li>
+              <li><span>Participantes</span> Produtores, técnicos e estudantes</li>
+            </ul>
+
+            <div class="price-box">
+              <span>Inscrição</span>
+              <strong>Grátis</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sobre">
+        <div class="container section-head">
+          <p class="eyebrow eyebrow-dark">Sobre o evento</p>
+          <h2>Preparando a produção para o futuro</h2>
+        </div>
+
+        <div class="container feature-grid">
+          <article class="feature-box">
+            <div class="icon">🌿</div>
+            <h3>Manejo sustentável</h3>
+            <p>
+              Técnicas para melhorar o desempenho da lavoura com menos perdas, maior eficiência
+              no uso de recursos e melhor resposta à variabilidade climática.
+            </p>
+          </article>
+
+          <article class="feature-box">
+            <div class="icon">☀️</div>
+            <h3>Adversidade climática</h3>
+            <p>
+              Diagnóstico dos impactos da sazonalidade e estratégias para reduzir riscos em anos
+              de clima mais imprevisível.
+            </p>
+          </article>
+
+          <article class="feature-box">
+            <div class="icon">📈</div>
+            <h3>Produtividade e rentabilidade</h3>
+            <p>
+              Visão prática para transformar boas práticas de manejo em ganhos reais de produção
+              e qualidade.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="programa">
+        <div class="container section-head">
+          <p class="eyebrow eyebrow-dark">Programação</p>
+          <h2>Conteúdo pensado para a realidade do produtor</h2>
+        </div>
+
+        <div class="container agenda">
+          <div class="agenda-item">
+            <span class="time">Abertura</span>
+            <div>
+              <h3>Boas-vindas e contextualização do evento</h3>
+              <p>Apresentação do tema, desafios da produção e importância do manejo sustentável.</p>
+            </div>
+          </div>
+
+          <div class="agenda-item">
+            <span class="time">Manejo</span>
+            <div>
+              <h3>Estratégias para aumentar a produtividade do cacau</h3>
+              <p>Práticas de manejo e decisões essenciais para manter a lavoura resiliente.</p>
+            </div>
+          </div>
+
+          <div class="agenda-item">
+            <span class="time">Clima</span>
+            <div>
+              <h3>Adversidade climática e resposta da cultura</h3>
+              <p>Como reduzir perdas e fortalecer a produção em anos mais desafiadores.</p>
+            </div>
+          </div>
+
+          <div class="agenda-item">
+            <span class="time">Campo</span>
+            <div>
+              <h3>Visita técnica e análise prática</h3>
+              <p>Observação de boas práticas no campo e troca de experiências entre participantes.</p>
+            </div>
+          </div>
+
+          <div class="agenda-item">
+            <span class="time">Encerramento</span>
+            <div>
+              <h3>Discussão final e networking</h3>
+              <p>Compartilhamento de aprendizados e oportunidades de aplicação na propriedade.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="beneficios">
+        <div class="container section-head">
+          <p class="eyebrow eyebrow-dark">Benefícios</p>
+          <h2>O que você leva para a propriedade</h2>
+        </div>
+
+        <div class="container benefit-grid">
+          <div class="benefit-card">
+            <strong>01</strong>
+            <p>Conhecimento prático para melhorar o manejo diário da produção.</p>
+          </div>
+
+          <div class="benefit-card">
+            <strong>02</strong>
+            <p>Melhores decisões para reduzir perdas e manter a produtividade estável.</p>
+          </div>
+
+          <div class="benefit-card">
+            <strong>03</strong>
+            <p>Conexão com produtores, técnicos e especialistas da cadeia produtiva.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section form-section" id="inscricao">
+        <div class="container form-wrap">
+          <div class="form-copy">
+            <p class="eyebrow eyebrow-dark">Inscrição</p>
+            <h2>Garanta sua participação</h2>
+            <p>
+              Preencha seus dados abaixo para confirmar a sua presença no Dia de Campo.
+              A inscrição é gratuita e as vagas são limitadas.
+            </p>
+
+            <div class="info-list">
+              <span>📍 Local: Parque Urbano Pedro Mendes (Lago)</span>
+              <span>📅 Data: 18 de outubro</span>
+              <span>🎟️ Vagas limitadas</span>
+            </div>
+          </div>
+
+          <form class="inscricao-form" action="https://formspree.io/f/xjyvlrqj" method="POST">
+            <div class="form-grid">
+              <label>
+                Nome completo
+                <input type="text" name="nome" placeholder="Seu nome" required />
+              </label>
+
+              <label>
+                E-mail
+                <input type="email" name="email" placeholder="seu@email.com" required />
+              </label>
+
+              <label>
+                Telefone
+                <input type="tel" name="telefone" placeholder="(99) 99999-9999" required />
+              </label>
+
+              <label>
+                Cidade/Estado
+                <input type="text" name="cidade" placeholder="Ex.: Ilhéus - BA" required />
+              </label>
+
+              <label>
+                Tipo de produtor
+                <select name="tipo_produtor" required>
+                  <option value="">Selecione</option>
+                  <option value="Produtor rural">Produtor rural</option>
+                  <option value="Técnico / consultor">Técnico / consultor</option>
+                  <option value="Estudante">Estudante</option>
+                  <option value="Empresa / fornecedor">Empresa / fornecedor</option>
+                </select>
+              </label>
+
+              <label>
+                Nome da fazenda
+                <input type="text" name="fazenda" placeholder="Ex.: Fazenda Boa Vista" required />
+              </label>
+            </div>
+
+            <label style="margin-top: 18px;">
+              Observações
+              <textarea name="mensagem" rows="4" placeholder="Conte-nos algo relevante sobre sua produção ou objetivo no evento"></textarea>
+            </label>
+
+            <button class="btn btn-primary submit-btn" type="submit">
+              Confirmar inscrição
+            </button>
+
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-row">
+        <p>© 2026 Campo Cacau. Dia de Campo sobre manejo e produtividade.</p>
+        <a href="#inscricao">Inscreva-se agora</a>
+      </div>
+    </footer>
+
+    <script>
+      const form = document.querySelector(".inscricao-form");
+      const statusBox = document.querySelector(".form-status");
+
+      if (form) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const button = form.querySelector('button[type="submit"]');
+          const originalText = button.textContent;
+
+          button.disabled = true;
+          button.textContent = "Enviando...";
+          statusBox.textContent = "";
+
+          try {
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+              headers: {
+                Accept: "application/json"
+              }
+            });
+
+            if (response.ok) {
+              form.reset();
+              statusBox.textContent = "Inscrição enviada com sucesso! Em breve entraremos em contato.";
+              statusBox.style.color = "#1b5d3f";
+            } else {
+              throw new Error("Erro ao enviar.");
+            }
+          } catch (error) {
+            statusBox.textContent = "Não foi possível enviar a inscrição. Verifique o endereço do Formspree e tente novamente.";
+            statusBox.style.color = "#a5382e";
+          } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
